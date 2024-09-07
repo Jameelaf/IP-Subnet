@@ -1,0 +1,11 @@
+Subnet Mask is a 32 bit number that divides the IP address into network and host portions. 
+
+Structure: Consists of four octets separated by dots. 
+     Example: 255.255.255.0 
+
+In binary form, it is a sequence of 1s followed a 0s
+           1 - denotes the network portion
+           0 - determines the host portion
+      Example: For an IP address 192.168.1.1 with a subnet mask of 255.255.255.0,
+               Network Part: 192.168.1 (the first 24 bits are 1s)
+               Host Part: 1 (the last 8 bits are 0s)  
