@@ -1,4 +1,31 @@
-Subnet Mask is a 32 bit number that divides the IP address into network and host portions. 
+IP Subnet: 
+- A subnet (short for "subnetwork") is a smaller network created within a larger network to manage and organize IP addresses more efficiently. 
+Subnets divide an IP address space into smaller, more manageable parts,making networking more scalable, secure, and efficient.
+
+- When you subnet a network, you separate it into segments that each have their own range of IP addresses. 
+   This is done by using a subnet mask to define which portion of the IP address refers to the network and which part refers to the 
+hosts within that network.
+
+Purpose of Subnetting:
+- Efficient IP Address Management: Subnetting allows the use of smaller network ranges, which reduces the wastage of IP addresses. 
+For example, instead of allocating a whole Class C network (192.168.1.0/24 with 256 IP addresses) to a small department with only 10 devices, 
+you can allocate a smaller subnet (192.168.1.0/28 with 16 IP addresses).
+
+- Improved Network Performance: By segmenting a large network into smaller subnets, you reduce broadcast traffic within each subnet. 
+Each subnet has its own broadcast domain, minimizing network congestion and improving overall performance.
+
+- Enhanced Security: Different departments or functions can be isolated on separate subnets. 
+This can help in managing access control and monitoring traffic, providing an added layer of security.
+
+- Simplified Network Management: Subnetting can make managing large networks easier. 
+Networks are organized into smaller, more manageable subnets, making tasks like troubleshooting and policy implementation more straightforward.
+
+
+
+
+
+Subnet Mask 
+- It is a 32 bit number that divides the IP address into network and host portions. 
 
 Structure: Consists of four octets separated by dots. 
      Example: 255.255.255.0 
