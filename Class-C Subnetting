@@ -1,0 +1,441 @@
+A Class C subnet is a range of IP addresses that fall within a specific IP address block and follow certain rules.
+
+Understanding Class C Networks
+
+IP Address Range for Class C:
+Class C IP addresses range from 192.0.0.0 to 223.255.255.255
+The first three octets are fixed, and the last octet can be assigned to hosts.
+
+Default Subnet Mask for Class C:
+The default subnet mask for a Class C network is 255.255.255.0 or /24 in CIDR notation.
+
+In binary, it is represented as:
+11111111.11111111.11111111.00000000
+     The first 24 bits: network portion, and the last 8 bits (one octet): host portion
+
+What is CIDR Notation?
+CIDR (Classless Inter-Domain Routing) notation is a method for specifying IP addresses and their associated network prefix
+CIDR notation represents an IP address along with the number of bits used for the network part of the address. 
+     ----------- The format is: <IP address>/<prefix length>
+
+Example of CIDR Notation
+Consider the CIDR notation 192.168.1.0/24:
+           - 192.168.1.0 is the base IP address.
+           - /24 means that the first 24 bits of the IP address are the network part,leaving the remaining 8 bits for host addresses.
+
+Subnet Characteristics:
+- Network Portion: First three octets (e.g., 192.168.1)
+- Host Portion: The last octet (e.g., .0 to .255)
+- Number of Possible Hosts: In a Class C network, you can have 256 IP addresses (0 to 255). However, the 
+        first address (.0) is reserved as the network address, and the last address (.255) is reserved as the broadcast address. 
+        This leaves 254 usable IP addresses for devices (hosts).
+
+Steps to Determine the Subnet of an IP Address:
+
+    * Convert the IP Address to Binary
+    
+    * Convert the Subnet Mask to Binary
+
+    * Determine Subnet Increment
+
+    * Identify Subnet Ranges
+
+
+Decimal	     Binary	      Explanation
+ 0	        00000000	    No bits set
+128	        10000000	    1 bit set
+192       	11000000	    2 bits set
+224        	11100000	    3 bits set
+240	        11110000	    4 bits set 
+248	        11111000	    5 bits set
+252       	11111100	    6 bits set
+254       	11111110	    7 bits set
+255        	11111111	    8 bits set
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+   
+1. Subnetting 192.168.1.1/26
+
+Objective:
+Learn how to answer an easy subnetting problem.
+
+Purpose:
+Learn how to apply the subnetting chart to an easy Class C subnetting problem.
+
+Walkthrough:
+Which subnet is host 192.168.1.1/26 in?
+
+Step-by-Step Calculations:
+
+IP Address in Binary: 192.168.1.1
+
+192: 11000000, 168: 10101000, 1: 00000001, 1: 00000001
+
+IP Address (binary): 11000000.10101000.00000001.00000001
+
+Subnet Mask in Binary: /26
+
+255: 11111111, 255: 11111111, 255: 11111111, 192: 11000000
+
+Convert Each Octet from Binary to Decimal:
+
+Binary to Decimal Conversion Formula,
+Value (b7 × 2^7) + (b6 × 2^6) + (b5 × 2^5) + (b4 × 2^4) + (b3 × 2^3) + (b2 × 2^2) + (b1 × 2^1) + (b0 × 2^0) 
+  ----- (Where b0 to b7 are the binary digits (bits)). 
+
+    
+Determine Subnet Increment:
+
+Notice the last octet (11000000), where the first two bits are 1s (26 bits in total) and the remaining 6 bits are 0s. 
+These 0 bits determine the range of IP addresses in each subnet.
+
+Subnet Increment Calculation:
+The increment is 2^(number of 0 bits). Here, there are 6 bits, so 2^6 = 64. 
+This means that each subnet will have a range of 64 IP addresses.
+
+Identify Subnet Ranges:
+
+To find the subnet ranges, we start from the base network address and increment by 64 until we reach the end of the address space (255).
+
+Base Network Address: 192.168.1.0
+
+SUBNET RANGES:
+
+-----> 192.168.1.0 + 64 - 1 = 63, 192.168.1.63 
+
+192.168.1.0 – 192.168.1.63 (First subnet)
+192.168.1.64 – 192.168.1.127 (Second subnet)
+192.168.1.128 – 192.168.1.191 (Third subnet)
+192.168.1.192 – 192.168.1.255 (Fourth subnet)
+
+Determine Which Subnet the Host is In:
+The host IP address is 192.168.1.1. 
+192.168.1.1 falls within the first subnet range 192.168.1.0 – 192.168.1.63
+
+Conclusion:
+Host 192.168.1.1 is in the 192.168.1.0/26 subnet.
+
+NOTE:
+
+The first address(of a subnet) is reserved for the network address.
+The last address(of a subnet) is reserved for the broadcast address.
+
+Example:
+
+1. First Subnet (192.168.1.0 – 192.168.1.63)
+- Network Address: 192.168.1.0
+- Broadcast Address: 192.168.1.63
+
+2. Second Subnet (192.168.1.64 – 192.168.1.127)
+- Network Address: 192.168.1.64
+- Broadcast Address: 192.168.1.127
+
+3. Third Subnet (192.168.1.128 – 192.168.1.191)
+- Network Address: 192.168.1.128
+- Broadcast Address: 192.168.1.191
+
+4. Fourth Subnet (192.168.1.192 – 192.168.1.255)
+- Network Address: 192.168.1.192
+- Broadcast Address: 192.168.1.255
+
+Why Reserve These Addresses?
+
+Network Address: Helps in organizing and managing networks effectively, enabling routers to identify and route traffic efficiently.
+
+Broadcast Address: Facilitates efficient communication to all devices within a subnet without needing to address each device individually. 
+This is especially helpful for protocols that require information to be broadcast to all network participants.
+
+----------------------------------------------------------END OF 1st CLASS-C SUBNET WALKTHROUGH---------------------------------------------------------------------
+
+2. Subnetting 192.168.1.100/26 
+
+Objective:
+Learn how to answer another easy subnetting problem.
+
+Purpose:
+Learn how to apply the subnetting chart to an easy Class C subnetting problem.
+
+Walkthrough:
+Which subnet is host 192.168.1.100/26 in?
+
+Step-by-Step Calculations:
+
+IP Address in Binary: 192.168.1.100
+
+192: 11000000, 168: 10101000, 1: 00000001, 100: 01100100
+
+IP Address (binary): 11000000.10101000.00000001.01100100
+
+Subnet Mask in Binary: /26
+
+255: 11111111, 255: 11111111, 255: 11111111, 192: 11000000
+
+Determine Subnet Increment:
+
+Notice the last octet (11000000), where the first two bits are 1s (26 bits in total) and the remaining 6 bits are 0s. 
+These 0 bits determine the range of IP addresses in each subnet.
+
+Subnet Increment Calculation:
+The increment is 2^(number of 0 bits). Here, there are 6 bits, so 2^6 = 64. 
+This means that each subnet will have a range of 64 IP addresses.
+
+Identify Subnet Ranges:
+
+To find the subnet ranges, we start from the base network address and increment by 64 until we reach the end of the address space (255).
+
+Base Network Address: 192.168.1.0
+
+SUBNET RANGES:
+
+-----> 192.168.1.0 + 64 - 1 = 63, 192.168.1.63 
+
+192.168.1.0 – 192.168.1.63 (First subnet) 
+192.168.1.64 – 192.168.1.127 (Second subnet) 
+192.168.1.128 – 192.168.1.191 (Third subnet)
+192.168.1.192 – 192.168.1.255 (Fourth subnet)
+
+Determine Which Subnet the Host is In:
+The host IP address is 192.168.1.100
+192.168.1.100 falls within the second subnet range 192.168.1.64 - 192.168.1.127
+
+Conclusion:
+Host 192.168.1.100 is in the 192.168.1.64/26 subnet.
+
+
+----------------------------------------------------------END OF 2nd CLASS-C SUBNET WALKTHROUGH---------------------------------------------------------------------
+
+3. Subnetting 192.168.1.100/27 
+
+Objective:
+Learn how to answer another easy subnetting problem.
+
+Purpose:
+Learn how to apply the subnetting chart to an easy Class C subnetting problem.
+
+Walkthrough:
+Which subnet is host 192.168.1.100/27 in?
+
+Step-by-Step Calculations:
+
+IP Address in Binary: 192.168.1.100
+
+192: 11000000, 168: 10101000, 1: 00000001, 100: 01100100
+
+IP Address (binary): 11000000.10101000.00000001.01100100
+
+Subnet Mask in Binary: /26
+
+255: 11111111, 255: 11111111, 255: 11111111, 192: 11100000
+
+Determine Subnet Increment:
+
+Notice the last octet (11000000), where the first three bits are 1s (26 bits in total) and the remaining 5 bits are 0s. 
+These 0 bits determine the range of IP addresses in each subnet.
+
+Subnet Increment Calculation:
+The increment is 2^(number of 0 bits). Here, there are 6 bits, so 2^5 = 32. 
+This means that each subnet will have a range of 32 IP addresses.
+
+Identify Subnet Ranges:
+
+To find the subnet ranges, we start from the base network address and increment by 32 until we reach the end of the address space (255).
+
+Base Network Address: 192.168.1.0
+
+SUBNET RANGES: 
+
+-----> 192.168.1.0 + 32 - 1 = 31, 192.168.1.31
+
+192.168.1.0 – 192.168.1.31 (First subnet)
+192.168.1.32 – 192.168.1.63 (Second subnet)
+192.168.1.64 – 192.168.1.95 (Third subnet)
+192.168.1.96 – 192.168.1.127 (Fourth subnet)
+192.168.1.128 – 192.168.1.159 (Fifth subnet)
+192.168.1.160 – 192.168.1.191 (Sixth subnet)
+192.168.1.192 – 192.168.1.223 (Seventh subnet)
+192.168.1.224 – 192.168.1.255 (Eighth subnet)
+
+Determine Which Subnet the Host is In:
+The host IP address is 192.168.1.100
+192.168.1.100 falls within the second subnet range 192.168.1.96 - 192.168.1.127
+
+Conclusion:
+Host 192.168.1.100 is in the 192.168.1.96/27 subnet.
+
+
+----------------------------------------------------------END OF 3rd CLASS-C SUBNET WALKTHROUGH---------------------------------------------------------------------
+
+4. Subnetting 192.168.1.77/28 
+
+Objective:
+Learn how to answer another easy subnetting problem.
+
+Purpose:
+Learn how to apply the subnetting chart to an easy Class C subnetting problem.
+
+Lab Walkthrough:
+Which subnet is host 192.168.1.77/28 in?
+
+Step-by-Step Calculations:
+
+IP Address in Binary: 192.168.1.77
+
+192: 11000000, 168: 10101000, 1: 00000001, 77: 01001101
+
+IP Address (binary): 11000000.10101000.00000001.01001101
+
+Subnet Mask in Binary: /28
+
+255: 11111111, 255: 11111111, 255: 11111111, 240: 11110000
+
+Determine Subnet Increment:
+
+Notice the last octet (11110000), where the first four bits are 1s (28 bits in total) and the remaining 4 bits are 0s. 
+These 0 bits determine the range of IP addresses in each subnet.
+
+Subnet Increment Calculation:
+The increment is 2^(number of 0 bits). Here, there are 4 bits, so 2^4 = 16. 
+This means that each subnet will have a range of 16 IP addresses.
+
+Identify Subnet Ranges:
+
+To find the subnet ranges, we start from the base network address and increment by 16 until we reach the end of the address space (255).
+
+Base Network Address: 192.168.1.0
+
+SUBNET RANGES: 
+
+-----> 192.168.1.0 + 16 - 1 = 15, 192.168.1.15
+
+192.168.1.0 – 192.168.1.15 (First subnet)
+192.168.1.16 – 192.168.1.31 (Second subnet)
+192.168.1.32 - 192.168.1.47 (Third subnet)
+192.168.1.48 - 192.168.1.63 (Fourth subnet)
+192.168.1.64 - 192.168.1.79 (Fifth subnet)
+
+So on...............
+
+Determine Which Subnet the Host is In:
+The host IP address is 192.168.1.77
+192.168.1.77 falls within the second subnet range 192.168.1.64 - 192.168.1.79
+
+Conclusion:
+Host 192.168.1.77 is in the 192.168.1.64/28 subnet.
+
+
+----------------------------------------------------------END OF 4th CLASS-C SUBNET WALKTHROUGH---------------------------------------------------------------------
+
+5. Subnetting 200.100.100.30/29 
+
+Objective:
+Learn how to answer a harder subnetting problem.
+
+Purpose:
+Learn how to apply the subnetting chart to answer a Class C subnetting problem.
+
+Walkthrough:
+Which subnet is host 200.100.100.30/29 in?
+
+Step-by-Step Calculations:
+
+IP Address in Binary: 200.100.100.30
+
+200: 11001000, 100: 01100100, 100: 01100100, 30: 00011110
+
+Subnet Mask in Binary: /29
+
+255: 11111111, 255: 11111111, 255: 11111111, 248: 11111000
+
+Determine Subnet Increment:
+
+Notice the last octet (11111000), where the first five bits are 1s (29 bits in total) and the remaining 3 bits are 0s. 
+These 0 bits determine the range of IP addresses in each subnet.
+
+Subnet Increment Calculation:
+The increment is 2^(number of 0 bits). Here, there are 3 bits, so 2^3 = 8. 
+This means that each subnet will have a range of 8 IP addresses.
+
+Identify Subnet Ranges:
+To find the subnet ranges, we start from the base network address and increment by 8 until we reach the end of the address space (255).
+
+Base Network Address: 200.100.100.0
+
+SUBNET RANGES: 
+
+-----> 100.100.100.0 + 8 - 1 = 31, 200.100.100.7
+
+200.100.100.0 - 200.100.100.7 (First subnet)
+200.100.100.8 - 200.100.100.15 (Second subnet)
+200.100.100.16 - 200.100.100.23 (Third subnet)
+200.100.100.24 - 100.100.100.31 (Fourth subnet)
+200.100.100.32 - 200.100.100.39 (Fifth subnet)
+
+So on............
+
+Determine Which Subnet the Host is In:
+The host IP address is 200.100.100.30
+200.100.100.30 falls within the second subnet range 200.100.100.24 - 200.100.100.31
+
+Conclusion:
+Host 200.100.100.30 is in the 200.100.100.24/29 subnet.
+
+
+----------------------------------------------------------END OF 5th CLASS-C SUBNET WALKTHROUGH---------------------------------------------------------------------
+
+6. Subnetting 210.200.100.145/25 
+
+Objective:
+Learn how to answer a hard subnetting problem.
+
+Purpose:
+Learn how to apply the subnetting chart to answer a Class C subnetting problem.
+
+Walkthrough:
+Which subnet is host 210.200.100.145/25 in?
+
+Step-by-Step Calculations:
+
+IP Address in Binary: 210.200.100.145
+
+210: 11010010, 200: 11001000 100: 01100100, 145: 10010001
+
+Subnet Mask in Binary: /25
+
+255: 11111111, 255: 11111111, 255: 11111111, 128: 10000000
+
+Determine Subnet Increment:
+
+Notice the last octet (11111000), where the first one bits is 1 (25 bits in total) and the remaining 7 bits are 0s. 
+These 0 bits determine the range of IP addresses in each subnet.
+
+Subnet Increment Calculation:
+The increment is 2^(number of 0 bits). Here, there are 7 bits, so 2^7 = 128. 
+This means that each subnet will have a range of 128 IP addresses.
+
+Identify Subnet Ranges:
+To find the subnet ranges, we start from the base network address and increment by 128 until we reach the end of the address space (255).
+
+Base Network Address: 210.200.100.0
+
+SUBNET RANGES: 
+
+-----> 210.200.100.0 + 128 - 1 = 31, 210.200.100.127
+
+210.200.100.0 - 210.200.100.127 (First subnet)
+210.200.100.128 - 210.200.100.255 (Second subnet)
+210.200.100.256 - 210.200.100.383 (Third subnet)
+
+So on...........
+
+Determine Which Subnet the Host is In:
+The host IP address is 210.200.100.30
+210.200.100.30 falls within the second subnet range 210.200.100.128 - 210.200.100.255
+
+Conclusion:
+Host 210.200.100.30 is in the 210.200.100.128/25 subnet.
+
+
+----------------------------------------------------------END OF 6th CLASS-C SUBNET WALKTHROUGH---------------------------------------------------------------------
+
+
